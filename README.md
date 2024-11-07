@@ -1,23 +1,25 @@
-# CS583-FinalProject
- 
-Group Name: 
+# Group Name: Fleet Footwork
 
 Name: Mosawar Jamshady
 Role: 
+Responsibility: 
+
+Name:  Kobe Tran
+Role:
 Responsibility: 
 
 Name: Joshua Concepcion
 Role:
 Responsibility: 
 
-Name: 
+Name: Julio Lopez
 Role:
 Responsibility: 
 
-Name: 
+Name: Stephen Parker
 Role:
 Responsibility: 
 
-Name: 
+Name: #########
 Role:
 Responsibility: 
