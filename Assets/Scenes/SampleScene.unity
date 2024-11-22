@@ -5784,6 +5784,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1792748541}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1792748545}
   m_SourcePrefab: {fileID: 100100000, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
 --- !u!4 &1792748539 stripped
 Transform:
@@ -5807,6 +5810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fed88bb0a01fe42986efcbbadd60c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  gravity: -9.8
+  jumpHeight: 1.5
 --- !u!143 &1792748542
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5845,6 +5851,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13466f53c3aa5b543a49d323579041d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1792748545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792748540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35936418d779bcc45b61b9476a22c77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 963194227}
+  xSensitivity: 30
+  ySensitivity: 30
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
