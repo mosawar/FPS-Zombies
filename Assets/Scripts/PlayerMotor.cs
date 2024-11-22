@@ -30,7 +30,8 @@ public class PlayerMotor : MonoBehaviour
     void handleAnimation()
     {
         // Check for walking
-        if (Mathf.Abs(playerVelocity.x) > 0.1f || Mathf.Abs(playerVelocity.z) > 0.1f)
+        // not working atm
+        if (Mathf.Abs(playerVelocity.x) > 0 || Mathf.Abs(playerVelocity.z) > 0)
         {
             animator.SetBool("isWalking", true);
         }
@@ -54,9 +55,12 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 input)
     {
         Vector3 moveDirection = Vector3.zero;
+
         moveDirection.x = input.x;
         moveDirection.z = input.y;
+
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
         playerVelocity.y += gravity * Time.deltaTime;
 
         if (isGrounded && playerVelocity.y < 0)
