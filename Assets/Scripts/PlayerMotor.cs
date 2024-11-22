@@ -51,18 +51,22 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-
+    // Method to handle player movement input
     public void ProcessMove(Vector2 input)
     {
         Vector3 moveDirection = Vector3.zero;
 
+        // Set the x and z components of the move direction based on the player's input
         moveDirection.x = input.x;
         moveDirection.z = input.y;
 
+        // Move the character controller in the direction calculated above, accounting for speed and time per frame
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
 
+        // Apply gravity to the player's vertical velocity over time
         playerVelocity.y += gravity * Time.deltaTime;
 
+        // This prevents the player from slowly sinking into the ground due to small negative y-velocity values
         if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = -2f;
@@ -71,10 +75,12 @@ public class PlayerMotor : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
+    // Method to handle jumping input
     public void Jump()
     {
         if (isGrounded)
         {
+            // Set the vertical velocity to a value that will propel the player upwards based on jump height and gravity
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
     }
