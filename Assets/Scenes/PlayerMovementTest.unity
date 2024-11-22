@@ -123,37 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &266446877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 266446878}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &266446878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266446877}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.032, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1792748539}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &337488828
 Mesh:
   m_ObjectHideFlags: 0
@@ -5765,15 +5734,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 151237fe6f1e75c40a05defd603a3ef4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
       insertIndex: 0
       addedObject: {fileID: 963194228}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 266446878}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b6fb2b0f26d50943a4c50ba8a7fecdd, type: 3}
       insertIndex: -1
@@ -5813,6 +5783,7 @@ MonoBehaviour:
   speed: 5
   gravity: -9.8
   jumpHeight: 1.5
+  anim: {fileID: 0}
 --- !u!143 &1792748542
 CharacterController:
   m_ObjectHideFlags: 0
