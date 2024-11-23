@@ -9,6 +9,8 @@ public class enemyAI : MonoBehaviour
     public Transform target;
     public float distanceThreshold = 10f;
     public float attackThreshold = 8f;
+    public float attackCooldown = 1.5f; 
+    private float lastAttackTime = 0f;
     public enum AIState{idle,chasing,attack};
 
     public AIState aiState = AIState.idle;
@@ -16,6 +18,7 @@ public class enemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    
         nm = GetComponent<NavMeshAgent>();
         StartCoroutine(Think());
        
@@ -53,7 +56,7 @@ public class enemyAI : MonoBehaviour
                     }
                     dist = Vector3.Distance(target.position, transform.position);
                     Debug.Log(dist);
-                    if(dist < 2.7f)
+                    if(dist < 1.5f)
                     {
                         Debug.Log("AttackThreshold met");
 
@@ -64,14 +67,21 @@ public class enemyAI : MonoBehaviour
                     nm.SetDestination(target.position);
                     break;
                 case AIState.attack:
-                    Debug.Log("Attack");
+                    
                     nm.SetDestination(transform.position);
                     dist = Vector3.Distance(target.position, transform.position);
-                    if(dist > 2.7f)
+                    if(dist > 1.5f)
                     {
                         aiState = AIState.chasing;
                         animator.SetBool("Attacking", false);
                         
+                    } else
+                    {
+                        if (Time.time > lastAttackTime + attackCooldown)
+                        {
+                            AttackPlayer();
+                            lastAttackTime = Time.time;
+                        }
                     }
                     break;
                     
@@ -83,5 +93,19 @@ public class enemyAI : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
 
         }
+        
     }
+
+    void AttackPlayer(){
+        Debug.Log("Zombie attacks the player!");
+
+        // Check if the player has a PlayerHealth component
+        PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+        
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(34); // Damage amount
+        }
+    }
+    
 }
