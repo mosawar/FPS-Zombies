@@ -1,9 +1,9 @@
 # Group Name: Fleet Footwork
-# Game Name: Fight 4 Tomorrow
+# Game Name: #########
 
 Name: Mosawar Jamshady
 Role: 
-Responsibility/Goal: Player Movement, Weapons, and UI
+Responsibility/Goal: 
 
 Name:  Kobe Tran
 Role:
