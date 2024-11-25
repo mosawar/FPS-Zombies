@@ -1,8 +1,8 @@
 # Group Name: Fleet Footwork
 
 Name: Mosawar Jamshady
-Role: 
-Responsibility: 
+Role: Engineer
+Responsibility: Player Movement
 
 Name:  Kobe Tran
 Role:
