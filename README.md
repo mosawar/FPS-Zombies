@@ -23,3 +23,8 @@ Responsibility:
 Name: Nero Hamidi
 Role:
 Responsibility: 
+
+
+# Description of current target for the game 
+
+# Gameplay video link
