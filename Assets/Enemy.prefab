@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2230377222271535164}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
   target: {fileID: 0}
   distanceThreshold: 10
   attackThreshold: 8
+  attackCooldown: 1.5
   aiState: 0
   animator: {fileID: 4010902397513694912}
 --- !u!1001 &5847180758407385033
