@@ -11,8 +11,6 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
-
-        // Use GetComponentInChildren to find the Animator on a child object
         animator = GetComponentInChildren<Animator>();
     }
 
