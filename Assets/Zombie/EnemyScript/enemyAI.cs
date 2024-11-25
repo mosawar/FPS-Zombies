@@ -11,7 +11,7 @@ public class enemyAI : MonoBehaviour
     public float attackThreshold = 8f;
     public float attackCooldown = 1.5f; 
     private float lastAttackTime = 0f;
-    public enum AIState{idle,chasing,attack};
+    public enum AIState{idle,chasing,attack,};
 
     public AIState aiState = AIState.idle;
     public Animator animator;
@@ -34,6 +34,10 @@ public class enemyAI : MonoBehaviour
     {
         while(true)
         {
+            if (nm == null || !nm.isOnNavMesh)
+            {
+                yield break; // Exit the coroutine if the NavMeshAgent is invalid
+            }
             switch (aiState)
             {
                 case AIState.idle:
