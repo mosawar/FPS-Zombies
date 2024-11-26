@@ -10,7 +10,7 @@ Responsibility:
 
 Name: Joshua Concepcion
 Role:
-Responsibility: 
+Responsibility: Map
 
 Name: Julio Lopez
 Role:
