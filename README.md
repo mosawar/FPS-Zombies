@@ -6,7 +6,7 @@ Responsibility: Player Movement
 
 Name:  Kobe Tran
 Role:
-Responsibility: 
+Responsibility: Weapons
 
 Name: Joshua Concepcion
 Role:
