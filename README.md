@@ -1,28 +1,28 @@
 # Group Name: Fleet Footwork
 
-- Name: Mosawar Jamshady
+Mosawar Jamshady
 - Role: Developer
 - Responsibility: Player Movement
 
-Name:  Kobe Tran
-Role: Developer
-Responsibility: Weapons
+Kobe Tran
+- Role: Developer
+- Responsibility: Weapons
 
-Name: Joshua Concepcion
-Role: Developer
-Responsibility: Map Design 
+Joshua Concepcion
+- Role: Developer
+- Responsibility: Map Design 
 
-Name: Julio Lopez
-Role: Developer
-Responsibility: Enemy AI
+Julio Lopez
+- Role: Developer
+- Responsibility: Enemy AI
 
-Name: Stephen Parker
-Role: Developer
-Responsibility: Map Design
+Stephen Parker
+- Role: Developer
+- Responsibility: Map Design
 
-Name: Nero Hamidi
-Role: Developer
-Responsibility: Enemy AI
+Nero Hamidi
+- Role: Developer
+- Responsibility: Enemy AI
 
 # Description of current target for the game 
 Our FPS Zombie Game features a round-based survival system where players face waves of enemies, including three distinct regular enemies and two powerful bosses. As players progress, enemy difficulty escalates, challenging them to adapt and strategize. Defeating enemy AI rewards players with in-game currency, which can be used to purchase a variety of weapons and upgrades. Players can also enhance their arsenal by upgrading their guns to match the increasing strength of enemies as the rounds advance, which creates a dynamic and engaging gameplay experience. As for the map we plan on having a large map where the player is able to roam around.
