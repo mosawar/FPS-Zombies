@@ -14,7 +14,7 @@ Responsibility:
 
 Name: Julio Lopez
 Role:
-Responsibility: 
+Responsibility: Enemy AI
 
 Name: Stephen Parker
 Role:
