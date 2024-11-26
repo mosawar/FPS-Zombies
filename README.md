@@ -1,8 +1,8 @@
 # Group Name: Fleet Footwork
 
-Name: Mosawar Jamshady
-Role: Developer
-Responsibility: Player Movement
+- Name: Mosawar Jamshady
+- Role: Developer
+- Responsibility: Player Movement
 
 Name:  Kobe Tran
 Role: Developer
