@@ -1,11 +1,11 @@
 # Group Name: Fleet Footwork
 
 Name: Mosawar Jamshady
-Role: Engineer
+Role: Developer
 Responsibility: Player Movement
 
 Name:  Kobe Tran
-Role:
+Role: Developer
 Responsibility: Weapons
 
 Name: Joshua Concepcion
@@ -13,7 +13,7 @@ Role: Developer
 Responsibility: Map Design 
 
 Name: Julio Lopez
-Role:
+Role: Developer
 Responsibility: Enemy AI
 
 Name: Stephen Parker
@@ -21,8 +21,8 @@ Role: Developer
 Responsibility: Map Design
 
 Name: Nero Hamidi
-Role:
-Responsibility: 
+Role: Developer
+Responsibility: Enemy AI
 
 
 # Description of current target for the game 
