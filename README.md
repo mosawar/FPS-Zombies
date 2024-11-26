@@ -9,16 +9,16 @@ Role:
 Responsibility: 
 
 Name: Joshua Concepcion
-Role:
-Responsibility: 
+Role: Developer
+Responsibility: Map Design 
 
 Name: Julio Lopez
 Role:
 Responsibility: Enemy AI
 
 Name: Stephen Parker
-Role:
-Responsibility: 
+Role: Developer
+Responsibility: Map Design
 
 Name: Nero Hamidi
 Role:

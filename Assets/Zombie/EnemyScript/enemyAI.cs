@@ -59,7 +59,7 @@ public class enemyAI : MonoBehaviour
 
                     }
                     dist = Vector3.Distance(target.position, transform.position);
-                    Debug.Log(dist);
+                    //Debug.Log(dist);
                     if(dist < 1.5f)
                     {
                         Debug.Log("AttackThreshold met");
