@@ -11,7 +11,7 @@ public class enemyAI : MonoBehaviour
     public float attackThreshold = 8f;
     public float attackCooldown = 1.5f; 
     private float lastAttackTime = 0f;
-    public enum AIState{idle,chasing,attack};
+    public enum AIState{idle,chasing,attack,};
 
     public AIState aiState = AIState.idle;
     public Animator animator;
@@ -20,6 +20,8 @@ public class enemyAI : MonoBehaviour
     {
     
         nm = GetComponent<NavMeshAgent>();
+        target = PlayerManager.instance.player.transform;
+        aiState = AIState.idle; // Ensure the AI starts in idle
         StartCoroutine(Think());
        
     }
@@ -34,6 +36,10 @@ public class enemyAI : MonoBehaviour
     {
         while(true)
         {
+            if (nm == null || !nm.isOnNavMesh)
+            {
+                yield break; // Exit the coroutine if the NavMeshAgent is invalid
+            }
             switch (aiState)
             {
                 case AIState.idle:
@@ -56,6 +62,7 @@ public class enemyAI : MonoBehaviour
                     }
                     dist = Vector3.Distance(target.position, transform.position);
                     Debug.Log(dist);
+                    //Debug.Log(dist);
                     if(dist < 1.5f)
                     {
                         Debug.Log("AttackThreshold met");
