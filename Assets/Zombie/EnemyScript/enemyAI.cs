@@ -20,6 +20,8 @@ public class enemyAI : MonoBehaviour
     {
     
         nm = GetComponent<NavMeshAgent>();
+        target = PlayerManager.instance.player.transform;
+        aiState = AIState.idle; // Ensure the AI starts in idle
         StartCoroutine(Think());
        
     }
@@ -59,6 +61,7 @@ public class enemyAI : MonoBehaviour
 
                     }
                     dist = Vector3.Distance(target.position, transform.position);
+                    Debug.Log(dist);
                     //Debug.Log(dist);
                     if(dist < 1.5f)
                     {
