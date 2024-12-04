@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance; // Singleton instance
+    
     public GameObject player; // Reference to the player GameObject
 
     private void Awake()
@@ -19,4 +21,6 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }

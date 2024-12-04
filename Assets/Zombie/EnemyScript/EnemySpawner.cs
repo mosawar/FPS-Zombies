@@ -10,7 +10,9 @@ public class EnemySpawner : MonoBehaviour
     public float spawnInterval = 5f; // Time between spawns
     public int maxZombies = 10; // Maximum number of zombies in the scene
     public TextMeshProUGUI killCount;
+    public  TextMeshProUGUI time;
     public int kills;
+    public float elapsedTime;
 
     private int currentZombieCount = 0;
 
@@ -18,8 +20,20 @@ public class EnemySpawner : MonoBehaviour
     {
         StartCoroutine(SpawnZombies());
         killCount.text = "Zombies Killed: " + kills;
-    }
+        time.text = "Time Survived: 0";
 
+    }
+    
+    void Update(){
+        elapsedTime += Time.deltaTime;
+       
+
+        int seconds = Mathf.FloorToInt(elapsedTime);
+
+        
+        time.text = "Time Survived: " + seconds;
+
+    }
     IEnumerator SpawnZombies()
     {
         while (true)
@@ -59,4 +73,4 @@ public class EnemySpawner : MonoBehaviour
         killCount.text = "Zombies Killed: " + kills;
         currentZombieCount--;
 
-}
+}}
