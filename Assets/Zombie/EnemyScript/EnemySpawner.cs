@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints; // Array of spawn points
     public float spawnInterval = 5f; // Time between spawns
     public int maxZombies = 10; // Maximum number of zombies in the scene
+    public TextMeshProUGUI killCount;
+    public int kills;
 
     private int currentZombieCount = 0;
 
     void Start()
     {
         StartCoroutine(SpawnZombies());
+        killCount.text = "Zombies Killed: " + kills;
     }
 
     IEnumerator SpawnZombies()
@@ -50,6 +54,9 @@ public class EnemySpawner : MonoBehaviour
     void OnZombieDeath()
     {
         // Decrement the zombie count when a zombie dies
+        kills++;
+
+        killCount.text = "Zombies Killed: " + kills;
         currentZombieCount--;
-    }
+
 }
