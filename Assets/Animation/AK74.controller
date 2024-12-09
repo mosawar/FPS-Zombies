@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RecoilM1911
+  m_Name: RecoilAK74
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e8a63303d0a719842bf10a9f36da6dd2, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7de63793c003c8d478eb4f748a834224, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -58,7 +58,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M1911
+  m_Name: AK74
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: RECOIL
@@ -109,7 +109,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IdleM1911
+  m_Name: IdleAK74
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -123,7 +123,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9210360a1da9a95478f72c8b250913dc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 05a54b4ed01236f43a06986dc5df407e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
