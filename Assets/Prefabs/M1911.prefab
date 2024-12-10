@@ -159,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110677400575740131}
   - component: {fileID: 2164506986780127599}
+  - component: {fileID: 5729892188772870754}
   m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
@@ -196,7 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d29fadb8d87e14c864fdab958c4f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
   shootingDelay: 0.5
   bulletsPerBurst: 0
   spreadIntensity: 0.05
@@ -204,7 +204,35 @@ MonoBehaviour:
   bulletSpawn: {fileID: 5164271527553452932}
   bulletVelocity: 100
   bulletPrefabLife: 3
+  muzzleEffect: {fileID: 0}
+  reloadTime: 0
+  magazineSize: 0
+  bulletsLeft: 0
+  isReloading: 0
+  weaponDamage: 20
+  thisWeaponModel: 0
   currentShootingMode: 0
+--- !u!95 &5729892188772870754
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6789805798766903083}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49a19f06cf7017d49a6785be283eb849, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6797220512813034053
 GameObject:
   m_ObjectHideFlags: 0

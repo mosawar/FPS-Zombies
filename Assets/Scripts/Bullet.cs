@@ -5,7 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Damage dealt by this bullet
-    public int damage = 20; // Adjust later
+    private int damage;
+
+    // Method to set damage value
+    public void SetDamage(int weaponDamage)
+    {
+        damage = weaponDamage;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Target"))
