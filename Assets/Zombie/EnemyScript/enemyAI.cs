@@ -21,12 +21,15 @@ public class enemyAI : MonoBehaviour
     void Start()
     {
         nm = GetComponent<NavMeshAgent>();
-        
+
+
+
         // Check if the target has been assigned in the Inspector
         if (target == null)
         {
-            Debug.LogError("Target not assigned in the Inspector. Please drag the player object into the 'Target' field.");
-            enabled = false; // Disable the script to avoid errors
+            // Find the player object by tag
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            target = player.transform;
             return;
         }
 
