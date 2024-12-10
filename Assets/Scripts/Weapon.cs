@@ -33,12 +33,24 @@ public class NewBehaviourScript : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
+    public int weaponDamage = 20; // Default damage for pistol
+
     public enum ShootingMode
     {
         Single,
         Burst,
         Auto
     }
+
+    public enum WeaponModel
+    {
+        M1911,
+        AK74,
+        M4,
+        Uzi
+    }
+
+    public WeaponModel thisWeaponModel;
 
     public ShootingMode currentShootingMode;
 
@@ -97,7 +109,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (AmmoManager.Instance.ammoDisplay != null)
         {
-            AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft/bulletsPerBurst}/{magazineSize/bulletsPerBurst}";
+            AmmoManager.Instance.ammoDisplay.text = $"{bulletsLeft}/{magazineSize}";
         }
     }
 
@@ -108,13 +120,21 @@ public class NewBehaviourScript : MonoBehaviour
         muzzleEffect.GetComponent<ParticleSystem>().Play();
         animator.SetTrigger("RECOIL");
 
-        SoundManager.Instance.shootingSoundM1911.Play();
+        SoundManager.Instance.PlayShootingSound(thisWeaponModel);
 
         readyToShoot = false;
 
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
+
         // Instantiate bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+        // Set the bullet's damage based on the weapon
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDamage(weaponDamage);
+        }
 
         // Pointing the bullet to face the shooting direction
         bullet.transform.forward = shootingDirection;
@@ -148,7 +168,7 @@ public class NewBehaviourScript : MonoBehaviour
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
 
-        SoundManager.Instance.reloadingSoundM1911.Play();
+        SoundManager.Instance.PlayReloadSound(thisWeaponModel);
     }
 
     private void ReloadCompleted()
