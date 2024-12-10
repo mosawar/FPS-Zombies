@@ -6,44 +6,50 @@ using UnityEngine.AI;
 public class enemyAI : MonoBehaviour
 {
     NavMeshAgent nm;
-    public Transform target;
-    public float distanceThreshold = 10f;
-    public float attackThreshold = 8f;
-    public float attackCooldown = 1.5f; 
+    public Transform target; // Drag the player object here in the Unity Editor
+    public float distanceThreshold = 50f;
+    public float attackThreshold = 1.5f;
+    public float attackCooldown = 1.5f;
     private float lastAttackTime = 0f;
-    public enum AIState{idle,chasing,attack,};
 
+    public enum AIState { idle, chasing, attack };
     public AIState aiState = AIState.idle;
+
     public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-    
         nm = GetComponent<NavMeshAgent>();
-        target = PlayerManager.instance.player.transform;
+
+
+
+        // Check if the target has been assigned in the Inspector
+        if (target == null)
+        {
+            // Find the player object by tag
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            target = player.transform;
+            return;
+        }
+
         aiState = AIState.idle; // Ensure the AI starts in idle
         StartCoroutine(Think());
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator Think()
     {
-        while(true)
+        while (true)
         {
             if (nm == null || !nm.isOnNavMesh)
             {
                 yield break; // Exit the coroutine if the NavMeshAgent is invalid
             }
+
             switch (aiState)
             {
                 case AIState.idle:
-                    float dist = Vector3.Distance(target.position,transform.position);
+                    float dist = Vector3.Distance(target.position, transform.position);
                     if (dist < distanceThreshold)
                     {
                         aiState = AIState.chasing;
@@ -51,38 +57,36 @@ public class enemyAI : MonoBehaviour
                     }
                     nm.SetDestination(transform.position);
                     break;
+
                 case AIState.chasing:
                     dist = Vector3.Distance(target.position, transform.position);
-                    
-                    if(dist > distanceThreshold)
+
+                    if (dist > distanceThreshold)
                     {
                         aiState = AIState.idle;
-                        animator.SetBool("Chasing",false);
-
+                        animator.SetBool("Chasing", false);
                     }
-                    dist = Vector3.Distance(target.position, transform.position);
-                    Debug.Log(dist);
-                    //Debug.Log(dist);
-                    if(dist < 1.5f)
+                    else if (dist < attackThreshold)
                     {
-                        Debug.Log("AttackThreshold met");
-
-                        //go into attack state
                         aiState = AIState.attack;
-                        animator.SetBool("Attacking",true);
+                        animator.SetBool("Attacking", true);
                     }
-                    nm.SetDestination(target.position);
+                    else
+                    {
+                        nm.SetDestination(target.position);
+                    }
                     break;
+
                 case AIState.attack:
-                    
                     nm.SetDestination(transform.position);
+
                     dist = Vector3.Distance(target.position, transform.position);
-                    if(dist > 1.5f)
+                    if (dist > attackThreshold)
                     {
                         aiState = AIState.chasing;
                         animator.SetBool("Attacking", false);
-                        
-                    } else
+                    }
+                    else
                     {
                         if (Time.time > lastAttackTime + attackCooldown)
                         {
@@ -91,28 +95,25 @@ public class enemyAI : MonoBehaviour
                         }
                     }
                     break;
-                    
-                    //attack
+
                 default:
                     break;
             }
 
             yield return new WaitForSeconds(0.2f);
-
         }
-        
     }
 
-    void AttackPlayer(){
+    void AttackPlayer()
+    {
         Debug.Log("Zombie attacks the player!");
 
         // Check if the player has a PlayerHealth component
         PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
-        
+
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(34); // Damage amount
         }
     }
-    
 }
