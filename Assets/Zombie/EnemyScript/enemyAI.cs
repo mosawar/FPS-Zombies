@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class enemyAI : MonoBehaviour
 {
-    NavMeshAgent nm;
-    public Transform target; // Drag the player object here in the Unity Editor
+    private NavMeshAgent nm;
+    public Transform target; // Automatically find the player object
     public float distanceThreshold = 50f;
     public float attackThreshold = 1.5f;
     public float attackCooldown = 1.5f;
@@ -22,85 +22,109 @@ public class enemyAI : MonoBehaviour
     {
         nm = GetComponent<NavMeshAgent>();
 
-
-
-        // Check if the target has been assigned in the Inspector
-        if (target == null)
+        // Try to find the player object
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            // Find the player object by tag
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            target = player.transform;
-            return;
+            target = player.transform; // Cache the player's transform
+        }
+        else
+        {
+            Debug.LogError("Player object not found. Ensure the Player is tagged 'Player' and present in the scene.");
         }
 
-        aiState = AIState.idle; // Ensure the AI starts in idle
-        StartCoroutine(Think());
+        // Ensure the AI starts in idle state
+        aiState = AIState.idle;
+
+        // Start the Think coroutine
+        if (nm != null && target != null)
+        {
+            StartCoroutine(Think());
+        }
     }
 
     IEnumerator Think()
     {
         while (true)
         {
+            // Ensure the NavMeshAgent is valid and on the NavMesh
             if (nm == null || !nm.isOnNavMesh)
             {
-                yield break; // Exit the coroutine if the NavMeshAgent is invalid
+                yield break; // Exit the coroutine if invalid
             }
 
             switch (aiState)
             {
                 case AIState.idle:
-                    float dist = Vector3.Distance(target.position, transform.position);
-                    if (dist < distanceThreshold)
-                    {
-                        aiState = AIState.chasing;
-                        animator.SetBool("Chasing", true);
-                    }
-                    nm.SetDestination(transform.position);
+                    HandleIdleState();
                     break;
 
                 case AIState.chasing:
-                    dist = Vector3.Distance(target.position, transform.position);
-
-                    if (dist > distanceThreshold)
-                    {
-                        aiState = AIState.idle;
-                        animator.SetBool("Chasing", false);
-                    }
-                    else if (dist < attackThreshold)
-                    {
-                        aiState = AIState.attack;
-                        animator.SetBool("Attacking", true);
-                    }
-                    else
-                    {
-                        nm.SetDestination(target.position);
-                    }
+                    HandleChasingState();
                     break;
 
                 case AIState.attack:
-                    nm.SetDestination(transform.position);
-
-                    dist = Vector3.Distance(target.position, transform.position);
-                    if (dist > attackThreshold)
-                    {
-                        aiState = AIState.chasing;
-                        animator.SetBool("Attacking", false);
-                    }
-                    else
-                    {
-                        if (Time.time > lastAttackTime + attackCooldown)
-                        {
-                            AttackPlayer();
-                            lastAttackTime = Time.time;
-                        }
-                    }
-                    break;
-
-                default:
+                    HandleAttackState();
                     break;
             }
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.2f); // Small delay for better performance
+        }
+    }
+
+    void HandleIdleState()
+    {
+        float dist = Vector3.Distance(target.position, transform.position);
+
+        if (dist < distanceThreshold)
+        {
+            aiState = AIState.chasing;
+            animator.SetBool("Chasing", true);
+        }
+        else
+        {
+            nm.SetDestination(transform.position); // Stay in place
+        }
+    }
+
+    void HandleChasingState()
+    {
+        float dist = Vector3.Distance(target.position, transform.position);
+
+        if (dist > distanceThreshold)
+        {
+            aiState = AIState.idle;
+            animator.SetBool("Chasing", false);
+        }
+        else if (dist < attackThreshold)
+        {
+            aiState = AIState.attack;
+            animator.SetBool("Attacking", true);
+        }
+        else
+        {
+            nm.SetDestination(target.position); // Move toward the player
+        }
+    }
+
+    void HandleAttackState()
+    {
+        nm.SetDestination(transform.position); // Stop moving
+
+        float dist = Vector3.Distance(target.position, transform.position);
+
+        if (dist > attackThreshold)
+        {
+            aiState = AIState.chasing;
+            animator.SetBool("Attacking", false);
+        }
+        else
+        {
+            if (Time.time > lastAttackTime + attackCooldown)
+            {
+                AttackPlayer();
+                lastAttackTime = Time.time;
+            }
         }
     }
 
