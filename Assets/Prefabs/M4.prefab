@@ -191,13 +191,14 @@ MonoBehaviour:
   spreadIntensity: 0.2
   bulletPrefab: {fileID: 1069867902471475703, guid: 08eebf5ab379e51448d0c229c90d87c9, type: 3}
   bulletSpawn: {fileID: 1710087076719630504}
-  bulletVelocity: 50
+  bulletVelocity: 370
   bulletPrefabLife: 3
   muzzleEffect: {fileID: 3467271358004903877}
   reloadTime: 2
   magazineSize: 30
   bulletsLeft: 0
   isReloading: 0
+  weaponDamage: 50
   thisWeaponModel: 2
   currentShootingMode: 1
 --- !u!95 &3541421368909481183
