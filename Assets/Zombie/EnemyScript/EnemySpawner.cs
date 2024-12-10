@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject zombiePrefab; // The zombie prefab to spawn
     public Transform[] spawnPoints; // Array of spawn points
-    public float spawnInterval = 5f; // Time between spawns
+    public float spawnInterval = 10f; // Time between spawns
     public int maxZombies = 10; // Maximum number of zombies in the scene
     private int currentZombieCount = 0;
     private PlayerScore playerScore; // Cached reference to the PlayerScore script
@@ -27,12 +27,13 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             // Wait for the specified interval
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(6f);
 
             // Check if we can spawn more zombies
             if (currentZombieCount < maxZombies)
             {
                 SpawnZombie();
+
             }
         }
     }
@@ -45,6 +46,8 @@ public class EnemySpawner : MonoBehaviour
 
         // Instantiate the zombie at the chosen spawn point
         GameObject zombie = Instantiate(zombiePrefab, spawnPoint.position, spawnPoint.rotation);
+
+        
 
         // Increment the zombie count
         currentZombieCount++;

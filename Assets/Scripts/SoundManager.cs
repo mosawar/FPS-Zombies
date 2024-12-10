@@ -21,6 +21,9 @@ public class SoundManager : MonoBehaviour
     public AudioSource reloadingSoundUzi;
 
     public AudioSource emptyMagazineSoundM1911;
+    public AudioSource zombieAttackSound;
+    public AudioSource zombieChasingSound;
+   
     private void Awake()
     {
         if (Instance != null && Instance != this)

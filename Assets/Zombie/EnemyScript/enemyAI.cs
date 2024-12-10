@@ -12,6 +12,7 @@ public class enemyAI : MonoBehaviour
     public float attackCooldown = 1.5f;
     private float lastAttackTime = 0f;
 
+
     public enum AIState { idle, chasing, attack };
     public AIState aiState = AIState.idle;
 
@@ -21,6 +22,7 @@ public class enemyAI : MonoBehaviour
     void Start()
     {
         nm = GetComponent<NavMeshAgent>();
+        StartCoroutine(PlayZombieSoundPeriodically());
 
         // Try to find the player object
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -69,6 +71,21 @@ public class enemyAI : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.2f); // Small delay for better performance
+        }
+    }
+    IEnumerator PlayZombieSoundPeriodically()
+    {
+        while (true)
+        {
+            // Wait for a random interval between 5 and 10 seconds
+            float waitTime = Random.Range(10f, 15f);
+            yield return new WaitForSeconds(waitTime);
+
+            // Check if the sound is not already playing before playing it
+            if (!SoundManager.Instance.zombieChasingSound.isPlaying)
+            {
+                SoundManager.Instance.zombieChasingSound.Play();
+            }
         }
     }
 
@@ -131,6 +148,7 @@ public class enemyAI : MonoBehaviour
     void AttackPlayer()
     {
         Debug.Log("Zombie attacks the player!");
+        SoundManager.Instance.zombieAttackSound.Play();
 
         // Check if the player has a PlayerHealth component
         PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
