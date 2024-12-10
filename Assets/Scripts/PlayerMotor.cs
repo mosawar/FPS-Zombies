@@ -18,6 +18,11 @@ public class PlayerMotor : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+
+        controller.stepOffset = 0.4f;
+        controller.slopeLimit = 45f;
     }
 
     // Update is called once per frame
@@ -30,8 +35,7 @@ public class PlayerMotor : MonoBehaviour
     void handleAnimation()
     {
         // Check for walking
-        // not working atm
-        if (Mathf.Abs(playerVelocity.x) > 0 || Mathf.Abs(playerVelocity.z) > 0)
+        if (Input.GetKey(KeyCode.W))
         {
             animator.SetBool("isWalking", true);
         }
@@ -40,8 +44,38 @@ public class PlayerMotor : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
 
-        // Check for jumping
-        if (!isGrounded && playerVelocity.y > 0)
+        // check for walkingbackwards
+        if (Input.GetKey(KeyCode.S))
+        {
+            animator.SetBool("isWalkingBackwards", true);
+        }
+        else
+        {
+            animator.SetBool("isWalkingBackwards", false);
+        }
+
+        // check for left strafe
+        if (Input.GetKey(KeyCode.A))
+        {
+            animator.SetBool("isLeftStrafe", true);
+        }
+        else
+        {
+            animator.SetBool("isLeftStrafe", false);
+        }
+
+        // check for right strafe
+        if (Input.GetKey(KeyCode.D))
+        {
+            animator.SetBool("isRightStrafe", true);
+        }
+        else
+        {
+            animator.SetBool("isRightStrafe", false);
+        }
+
+        // check for jumping
+        if (!isGrounded && Input.GetKey(KeyCode.Space))
         {
             animator.SetBool("isJumping", true);
         }
@@ -49,6 +83,18 @@ public class PlayerMotor : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
+        
+        // check for reloading
+        if (Input.GetKey(KeyCode.R))
+        {
+            animator.SetBool("isReloading", true);
+        }
+        else
+        {
+            animator.SetBool("isReloading", false);
+        }
+
+
     }
 
     // Method to handle player movement input
