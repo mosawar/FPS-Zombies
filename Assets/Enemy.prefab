@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35c867a5a810134e94fc58a771a6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1313444118511399871, guid: 91f2a66a87031ea4db8eb487f204c6dd, type: 3}
+  target: {fileID: 0}
   distanceThreshold: 50
-  attackThreshold: 1.5
+  attackThreshold: 2
   attackCooldown: 1.5
   aiState: 0
   animator: {fileID: 4010902397513694912}

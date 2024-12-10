@@ -46,24 +46,25 @@ public class EnemyHealth : MonoBehaviour
             animator.SetTrigger("DieBackward");
         }
 
-        
+
         GetComponent<Collider>().enabled = false; // Prevent further collisions
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false; // disable navmesh movement
         this.enabled = false; // stop AI logic
 
-    //call destroy enemy 
-    StartCoroutine(DestroyAfterDeath());
-}
+        //call destroy enemy 
+        StartCoroutine(DestroyAfterDeath());
+    }
 
     private IEnumerator DestroyAfterDeath()
     {
+        onDeath?.Invoke();
         // wait til animation finishes
         while (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Death") || animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             yield return null;
         }
 
-        onDeath?.Invoke();
+
         // destroy enemy
         Destroy(gameObject);
     }

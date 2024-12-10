@@ -8,11 +8,17 @@ public class EnemySpawner : MonoBehaviour
     public Transform[] spawnPoints; // Array of spawn points
     public float spawnInterval = 5f; // Time between spawns
     public int maxZombies = 10; // Maximum number of zombies in the scene
-
     private int currentZombieCount = 0;
+    private PlayerScore playerScore; // Cached reference to the PlayerScore script
 
     void Start()
     {
+        // Cache the PlayerScore reference at the start
+        playerScore = FindObjectOfType<PlayerScore>();
+        if (playerScore == null)
+        {
+            Debug.LogError("PlayerScore script not found in the scene.");
+        }
         StartCoroutine(SpawnZombies());
     }
 
@@ -42,9 +48,16 @@ public class EnemySpawner : MonoBehaviour
 
         // Increment the zombie count
         currentZombieCount++;
-
-        // Subscribe to the zombie's death event to reduce the count when it's destroyed
-        zombie.GetComponent<EnemyHealth>().onDeath += OnZombieDeath;
+        // Subscribe to the zombie's death event
+        EnemyHealth enemyHealth = zombie.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.onDeath += OnZombieDeath;
+            if (playerScore != null)
+            {
+                enemyHealth.onDeath += playerScore.IncrementZombiesKilled;
+            }
+        }
     }
 
     void OnZombieDeath()
