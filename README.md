@@ -18,4 +18,4 @@ Our FPS Zombie Game features a round-based survival system where players face wa
 https://drive.google.com/file/d/1bCKeHvj81xPrknnVtGLzELL1JP1jswNm/view?usp=sharing
 
 # Gameplay video link (final check)
-https://drive.google.com/file/d/1MFGLTuFvEL_UDpEL10XleSBEjRmKoU3_/view?usp=sharing
+https://drive.google.com/file/d/1dgNTHMFDyTqCeKHdljUyrhDZeSeRLWjJ/view?usp=sharing
