@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
         while (true)
         {
             // Wait for the specified interval
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(2f);
 
             // Check if we can spawn more zombies
             if (currentZombieCount < maxZombies)
@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Increment the zombie count
         currentZombieCount++;
-        Debug.Log(currentZombieCount);
+        
         // Subscribe to the zombie's death event
         EnemyHealth enemyHealth = zombie.GetComponent<EnemyHealth>();
         if (enemyHealth != null)

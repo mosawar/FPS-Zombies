@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Map.unity
     guid: 1e44992b4494c514aa4484eed3c3543f
+  - enabled: 1
+    path: Assets/Scenes/Final MapV2.unity
+    guid: 1a9c8b43fca3d7244941d1111939f399
+  - enabled: 1
+    path: Assets/Scenes/Death Screen.unity
+    guid: 4095b091f09842b4381719f416ec6709
   m_configObjects: {}
