@@ -24365,6 +24365,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 93918901}
     - target: {fileID: 4797278151653195443, guid: c980bce0c5c716143be81db275fbab7c, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4797278151653195443, guid: c980bce0c5c716143be81db275fbab7c, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 2051860125}
@@ -33564,8 +33568,8 @@ MonoBehaviour:
   reloadingSoundM4: {fileID: 1937886111}
   reloadingSoundUzi: {fileID: 1937886110}
   emptyMagazineSoundM1911: {fileID: 1937886112}
-  zombieAttackSound: {fileID: 0}
-  zombieChasingSound: {fileID: 0}
+  zombieAttackSound: {fileID: 1937886118}
+  zombieChasingSound: {fileID: 1937886119}
 --- !u!4 &1937886117
 Transform:
   m_ObjectHideFlags: 0
