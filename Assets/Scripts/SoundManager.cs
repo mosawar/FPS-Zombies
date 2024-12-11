@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource emptyMagazineSoundM1911;
     public AudioSource zombieAttackSound;
     public AudioSource zombieChasingSound;
+    private bool isCoroutineRunning = false;
    
     private void Awake()
     {
@@ -33,6 +34,32 @@ public class SoundManager : MonoBehaviour
         else
         {
             Instance = this;
+        }
+    }
+    void Start(){
+
+        if (!isCoroutineRunning) // Prevent multiple zombie chasing sounds from playing
+        {
+            StartCoroutine(PlayZombieSoundPeriodically());
+            Debug.Log("Starting Coroutine");
+        }
+    }
+
+    IEnumerator PlayZombieSoundPeriodically()
+    {
+        isCoroutineRunning = true;
+
+        while (true)
+        {
+           
+            
+            yield return new WaitForSeconds(15f);
+
+            // Check if the sound is not already playing before playing it
+            if (!SoundManager.Instance.zombieChasingSound.isPlaying)
+            {
+                SoundManager.Instance.zombieChasingSound.Play();
+            }
         }
     }
 

@@ -51,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Increment the zombie count
         currentZombieCount++;
+        Debug.Log(currentZombieCount);
         // Subscribe to the zombie's death event
         EnemyHealth enemyHealth = zombie.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
